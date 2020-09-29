@@ -2,7 +2,7 @@ from selenium import webdriver
 import requests
 from bs4 import BeautifulSoup
 from tqdm import tqdm
-
+import re
 
 # 경향신문 크롤링
 def kh():
@@ -34,8 +34,27 @@ def kh():
 #     크롤링한 텍스트 데이터 저장
     with open('D:/workspace/Public_data_analysis_v2/Public_data_analysis_v2/src/data/kh.txt', mode = 'wt', encoding = 'utf-8') as file:
         for w in kh_word:
+
+            # 정규식 전처리
+            w = re.sub(r'[-\'@#:/a-zA-Z<>!-"·‘*\(\)]', '', w)
+            w = re.sub(r'[ ]+', ' ', w)
+            #             "" 제거
+            w = re.sub(r'[“”]', ' ', w)
+            #             특수문자 제거
+            w = re.sub(r'[^\w\s]', '', w)
+            #             []안 문자 제거
+            w = re.sub(r'\[.*?\]', '', w)
+
+            # 한 줄씩 저장
             file.writelines('{}\n'.format(w))
 
+
+def kh_open():
+    with open('D:/workspace/Public_data_analysis_v2/Public_data_analysis_v2/src/data/kh.txt', mode='r',encoding='utf-8') as file:
+        global kh_text
+        kh_text = file.readlines()
+        for i, w in enumerate(kh_text):
+            kh_text[i] = w.replace('\n', '')
 
 
 # 동아일보 크롤링
@@ -67,8 +86,25 @@ def donga():
     #     크롤링한 텍스트 데이터 저장
     with open('D:/workspace/Public_data_analysis_v2/Public_data_analysis_v2/src/data/donga.txt', mode = 'wt', encoding = 'utf-8') as file:
         for w in donga_word:
-            filechosun_wordlines('{}\n'.format(w))
 
+            # 정규식 전처리
+            w = re.sub(r'[-\'@#:/a-zA-Z<>!-"·‘*\(\)]', '', w)
+            w = re.sub(r'[ ]+', ' ', w)
+            #             "" 제거
+            w = re.sub(r'[“”]', ' ', w)
+            #             특수문자 제거
+            w = re.sub(r'[^\w\s]', '', w)
+            #             []안 문자 제거
+            w = re.sub(r'\[.*?\]', '', w)
+
+            file.writelines('{}\n'.format(w))
+
+def donga_open():
+    with open('D:/workspace/Public_data_analysis_v2/Public_data_analysis_v2/src/data/donga.txt', mode='r',encoding='utf-8') as file:
+        global donga_text
+        donga_text = file.readlines()
+        for i, w in enumerate(donga_text):
+            donga_text[i] = w.replace('\n', '')
 
 
 # 한겨레 크롤링
@@ -100,8 +136,25 @@ def hani():
     #     크롤링한 텍스트 데이터 저장
     with open('D:/workspace/Public_data_analysis_v2/Public_data_analysis_v2/src/data/hani.txt', mode = 'wt', encoding = 'utf-8') as file:
         for w in hani_word:
+
+            # 정규식 전처리
+            w = re.sub(r'[-\'@#:/a-zA-Z<>!-"·‘*\(\)]', '', w)
+            w = re.sub(r'[ ]+', ' ', w)
+            #             "" 제거
+            w = re.sub(r'[“”]', ' ', w)
+            #             특수문자 제거
+            w = re.sub(r'[^\w\s]', '', w)
+            #             []안 문자 제거
+            w = re.sub(r'\[.*?\]', '', w)
+
             file.writelines('{}\n'.format(w))
 
+def hani_open():
+    with open('D:/workspace/Public_data_analysis_v2/Public_data_analysis_v2/src/data/hani.txt', mode='r',encoding='utf-8') as file:
+        global hani_text
+        hani_text = file.readlines()
+        for i, w in enumerate(hani_text):
+            hani_text[i] = w.replace('\n', '')
 
 
 # 조선일보 크롤링
@@ -140,5 +193,22 @@ def chosun():
     #     크롤링한 텍스트 데이터 저장
     with open('D:/workspace/Public_data_analysis_v2/Public_data_analysis_v2/src/data/chosun.txt', mode = 'wt', encoding = 'utf-8') as file:
         for w in chosun_word:
+
+            # 정규식 전처리
+            w = re.sub(r'[-\'@#:/a-zA-Z<>!-"·‘*\(\)]', '', w)
+            w = re.sub(r'[ ]+', ' ', w)
+            #             "" 제거
+            w = re.sub(r'[“”]', ' ', w)
+            #             특수문자 제거
+            w = re.sub(r'[^\w\s]', '', w)
+            #             []안 문자 제거
+            w = re.sub(r'\[.*?\]', '', w)
+
             file.writelines('{}\n'.format(w))
 
+def chosun_open():
+    with open('D:/workspace/Public_data_analysis_v2/Public_data_analysis_v2/src/data/chosun.txt', mode='r',encoding='utf-8') as file:
+        global chosun_text
+        chosun_text = file.readlines()
+        for i, w in enumerate(chosun_text):
+            chosun_text[i] = w.replace('\n', '')
