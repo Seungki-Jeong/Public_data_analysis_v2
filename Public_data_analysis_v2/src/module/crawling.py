@@ -31,12 +31,13 @@ def kh():
             kh_word.append(tit.text)
             kh_word.append(wor.text)
 
+
 #     크롤링한 텍스트 데이터 저장
     with open('D:/workspace/Public_data_analysis_v2/Public_data_analysis_v2/src/data/kh.txt', mode = 'wt', encoding = 'utf-8') as file:
         for w in kh_word:
 
             # 정규식 전처리
-            w = re.sub(r'[-\'@#:/a-zA-Z<>!-"·‘*\(\)]', '', w)
+            w = re.sub(r'[-\'@#:/a-zA-Z<>!-"·\t‘*\(\)]', '', w)
             w = re.sub(r'[ ]+', ' ', w)
             #             "" 제거
             w = re.sub(r'[“”]', ' ', w)
@@ -88,7 +89,7 @@ def donga():
         for w in donga_word:
 
             # 정규식 전처리
-            w = re.sub(r'[-\'@#:/a-zA-Z<>!-"·‘*\(\)]', '', w)
+            w = re.sub(r'[-\'@#:/a-zA-Z<>!-"·\t‘*\(\)]', '', w)
             w = re.sub(r'[ ]+', ' ', w)
             #             "" 제거
             w = re.sub(r'[“”]', ' ', w)
@@ -138,7 +139,7 @@ def hani():
         for w in hani_word:
 
             # 정규식 전처리
-            w = re.sub(r'[-\'@#:/a-zA-Z<>!-"·‘*\(\)]', '', w)
+            w = re.sub(r'[-\'@#:/a-zA-Z<>!-"·\t‘*\(\)]', '', w)
             w = re.sub(r'[ ]+', ' ', w)
             #             "" 제거
             w = re.sub(r'[“”]', ' ', w)
@@ -195,7 +196,7 @@ def chosun():
         for w in chosun_word:
 
             # 정규식 전처리
-            w = re.sub(r'[-\'@#:/a-zA-Z<>!-"·‘*\(\)]', '', w)
+            w = re.sub(r'[-\'@#:/a-zA-Z<>!-"·\t‘*\(\)]', '', w)
             w = re.sub(r'[ ]+', ' ', w)
             #             "" 제거
             w = re.sub(r'[“”]', ' ', w)
